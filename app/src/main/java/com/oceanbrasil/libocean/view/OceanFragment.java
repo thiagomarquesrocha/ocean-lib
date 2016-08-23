@@ -1,4 +1,4 @@
-package com.oceanmanaus.libocean.view;
+package com.oceanbrasil.libocean.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,10 +7,10 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.v4.app.Fragment;
 
-import com.oceanmanaus.libocean.Ocean;
+import com.oceanbrasil.libocean.Ocean;
 
 /**
- * Created by oceanmanaus on 22/08/2016.
+ * Created by oceanbrasil on 22/08/2016.
  */
 public abstract class OceanFragment extends Fragment {
 

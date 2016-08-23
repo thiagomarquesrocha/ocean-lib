@@ -1,7 +1,7 @@
-package com.oceanmanaus.libocean.control.http;
+package com.oceanbrasil.libocean.control.http;
 
 /**
- * Created by oceanmanaus on 19/08/2016.
+ * Created by oceanbrasil on 19/08/2016.
  */
 public class HttpCallback {
     public interface PostJSONListener{

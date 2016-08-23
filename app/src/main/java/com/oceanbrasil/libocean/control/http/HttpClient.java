@@ -1,4 +1,4 @@
-package com.oceanmanaus.libocean.control.http;
+package com.oceanbrasil.libocean.control.http;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by oceanmanaus on 19/08/2016.
+ * Created by oceanbrasil on 19/08/2016.
  */
 public class HttpClient {
     private String url;

@@ -1,14 +1,14 @@
-package com.oceanmanaus.libocean;
+package com.oceanbrasil.libocean;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.oceanmanaus.libocean.control.http.Request;
+import com.oceanbrasil.libocean.control.http.Request;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by oceanmanaus on 19/08/2016.
+ * Created by oceanbrasil on 19/08/2016.
  */
 public class Ocean {
 

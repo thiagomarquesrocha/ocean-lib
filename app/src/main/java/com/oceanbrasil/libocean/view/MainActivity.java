@@ -1,10 +1,10 @@
-package com.oceanmanaus.libocean.view;
+package com.oceanbrasil.libocean.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.oceanmanaus.libocean.R;
-import com.oceanmanaus.libocean.control.http.Request;
+import com.oceanbrasil.libocean.R;
+import com.oceanbrasil.libocean.control.http.Request;
 
 import org.json.JSONObject;
 

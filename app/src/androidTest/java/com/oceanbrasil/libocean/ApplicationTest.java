@@ -1,4 +1,4 @@
-package com.oceanmanaus.libocean;
+package com.oceanbrasil.libocean;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

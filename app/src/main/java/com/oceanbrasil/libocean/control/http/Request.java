@@ -1,4 +1,4 @@
-package com.oceanmanaus.libocean.control.http;
+package com.oceanbrasil.libocean.control.http;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 /**
- * Created by oceanmanaus on 19/08/2016.
+ * Created by oceanbrasil on 19/08/2016.
  */
 public class Request {
 
