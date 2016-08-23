@@ -3,9 +3,10 @@ package com.oceanbrasil.libocean;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 
+import com.oceanbrasil.libocean.control.glide.GlideImage;
 import com.oceanbrasil.libocean.control.http.Request;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by oceanbrasil on 19/08/2016.
@@ -43,13 +44,23 @@ public class Ocean {
         return (info != null && info.isConnected());
     }
 
+
     /**
-     * Tratamento de Imagem com Picasso
-     * @param context
-     * @return
+     * Abrir uma imagem recuperando da piscina de objetos a imagem
+     * @param photo imagem ( URL, URI ou Recurso )
+     * @return requisicao da imagem
      */
-    public static Picasso picasso(Context context){
-        return Picasso.with(context);
+    public static GlideImage glide(Context context,Object photo){
+        GlideImage image = new GlideImage(context);
+
+        if(photo instanceof String)
+            image = (GlideImage) image.load((String) photo);
+        else if(photo instanceof Uri)
+            image = (GlideImage) image.load((Uri) photo);
+        else if(photo instanceof Integer)
+            image = (GlideImage) image.load((int) photo);
+
+        return image;
     }
 
 }
