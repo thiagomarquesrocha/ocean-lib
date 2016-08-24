@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.signature.MediaStoreSignature;
+import com.oceanbrasil.libocean.R;
 
 /**
  * Created by oceanmanaus on 23/08/2016.
@@ -35,7 +36,7 @@ public class GlideImage {
         url = null;
         uri = null;
         resource = 0;
-        placeHolder = 0;
+        placeHolder = R.mipmap.ic_launcher;
         builder = null;
         imageView = null;
         bytesDelegate = null;

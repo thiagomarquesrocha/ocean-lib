@@ -1,12 +1,12 @@
-apply plugin: 'com.android.application'
-//apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.oceanbrasil.libocean"
+        /*applicationId "com.oceanbrasil.libocean"*/
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
@@ -26,6 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.github.kevinsawicki:http-request:6.0'
-    compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }

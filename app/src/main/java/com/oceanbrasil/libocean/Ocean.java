@@ -1,9 +1,10 @@
 package com.oceanbrasil.libocean;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 
 import com.oceanbrasil.libocean.control.glide.GlideImage;
 import com.oceanbrasil.libocean.control.http.Request;
@@ -32,6 +33,11 @@ public class Ocean {
         return new Request(urlServer,callback);
     }
 
+    public static Bitmap byteToBitmap(byte[] data){
+        if(data == null) return null;
+        return BitmapFactory.decodeByteArray(data, 0, data.length);
+    }
+
     /**
      * Verifica se tem conexao no device
      * @param ctx
@@ -47,20 +53,10 @@ public class Ocean {
 
     /**
      * Abrir uma imagem recuperando da piscina de objetos a imagem
-     * @param photo imagem ( URL, URI ou Recurso )
      * @return requisicao da imagem
      */
-    public static GlideImage glide(Context context,Object photo){
-        GlideImage image = new GlideImage(context);
-
-        if(photo instanceof String)
-            image = (GlideImage) image.load((String) photo);
-        else if(photo instanceof Uri)
-            image = (GlideImage) image.load((Uri) photo);
-        else if(photo instanceof Integer)
-            image = (GlideImage) image.load((int) photo);
-
-        return image;
+    public static GlideImage glide(Context context){
+        return new GlideImage(context);
     }
 
 }

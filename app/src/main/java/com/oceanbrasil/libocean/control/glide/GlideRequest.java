@@ -16,8 +16,8 @@ public class GlideRequest {
     public static final int BYTES = 2;
 
     public static Uri toURI(GlideImage glide) {
-        if(glide.getUri() == null && glide.getUrl() == null && glide.getResource() == 0) throw new IllegalArgumentException("O load nao foi iniciado em GlideImage");
-        if(glide.getUri()== null && (glide.getUrl() == null || glide.getUrl().isEmpty()) && glide.getPlaceHolder() == 0) throw new IllegalArgumentException("Falta o placeholder, pois a URL esta vazia");
+        if(glide.getUri() == null && glide.getUrl() == null) throw new IllegalArgumentException("O load nao foi iniciado em GlideImage");
+        if(glide.getUri()== null && (glide.getUrl() == null || glide.getUrl().isEmpty())) throw new IllegalArgumentException("URL esta vazia");
 
         if (glide.getUri()== null) {
             if (glide.getUrl() != null) {

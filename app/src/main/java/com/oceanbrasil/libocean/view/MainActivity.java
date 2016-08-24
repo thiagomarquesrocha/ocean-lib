@@ -1,8 +1,10 @@
 package com.oceanbrasil.libocean.view;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.oceanbrasil.libocean.Ocean;
 import com.oceanbrasil.libocean.R;
@@ -13,7 +15,9 @@ import com.oceanbrasil.libocean.control.http.Request;
 import org.json.JSONObject;
 
 
-public class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener {
+public class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
+
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +30,36 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
 
         //Ocean.picassoWith(this).load("").resize(200,200).centerCrop().into();
 
-        Ocean.glide(this, "https://firebasestorage.googleapis.com/v0/b/ocean-book.appspot.com/o/capas%2F2016-08-23_034518camera.jpg_camera?alt=media&token=f73afa6d-0ac1-47ed-833c-8977c4244e3b")
-                .placeHolder(R.mipmap.ic_launcher)
+        /**
+         *
+         * Bitmap exemplo
+         *
+         * Ocean.glide(this)
+             .load("http://novatec.com.br/figuras/capas/9788575223505.gif")
+             .build(GlideRequest.BITMAP)
+             .addDelegateImageBitmap(this)
+             .resize(200, 200)
+             .into(ImageView);
+
+           Bytes exemplo
+
+             Ocean.glide(this)
+             .load("http://novatec.com.br/figuras/capas/9788575223505.gif")
+             .build(GlideRequest.BYTES)
+             .addDelegateImageBytes(this)
+             .toBytes(150, 150);
+
+         *
+         */
+
+
+        image = (ImageView) findViewById(R.id.image);
+
+        Ocean.glide(this)
+                .load("http://novatec.com.br/figuras/capas/9788575223505.gif")
                 .build(GlideRequest.BYTES)
                 .addDelegateImageBytes(this)
-                .toBytes(100,100);
+                .toBytes(150, 150);
 
 
     }
@@ -43,5 +72,12 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
     @Override
     public void createdImageBytes(byte[] data) {
         Log.i("Ale","data "+data.length);
+        Bitmap bitmap = Ocean.byteToBitmap(data);
+        image.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void createdImageBitmap(Bitmap imageBitmap) {
+        Log.i("Ale","Bitmap criado " + imageBitmap.getHeight());
     }
 }
