@@ -36,7 +36,7 @@ public class GlideImage {
         url = null;
         uri = null;
         resource = 0;
-        placeHolder = R.mipmap.ic_launcher;
+        placeHolder = R.mipmap.ic_placeholder;
         builder = null;
         imageView = null;
         bytesDelegate = null;
