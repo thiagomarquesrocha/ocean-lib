@@ -1,6 +1,4 @@
-# LibOcean
-
-# Ocean Library
+# OceanLib
 
 Construindo apps em poucas linhas, uma biblioteca que reúne as melhores soluções em Android em um só lugar
 
