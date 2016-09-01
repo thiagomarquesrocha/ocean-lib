@@ -1,6 +1,7 @@
 package com.oceanbrasil.libocean.view;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,9 @@ import com.oceanbrasil.libocean.control.glide.ImageDelegate;
 import com.oceanbrasil.libocean.control.http.Request;
 
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
@@ -60,6 +64,20 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
                 .build(GlideRequest.BYTES)
                 .addDelegateImageBytes(this)
                 .toBytes(150, 150);
+
+        //Ocean.newRequest("http://gitlab.oceanmanaus.com/snippets/1/raw",this).get().send();
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_placeholder);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] bitMapData = stream.toByteArray();
+
+        HashMap<String, byte[]> file = new HashMap<>();
+        file.put("file.png", bitMapData);
+
+        Log.d("Image", bitMapData.length + "");
+
+        Ocean.newRequest("http://10.0.2.2/teste", this).get().add("teste", 1).send();
 
 
     }
