@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.oceanbrasil.libocean.Ocean;
 import com.oceanbrasil.libocean.R;
-import com.oceanbrasil.libocean.control.glide.GlideRequest;
 import com.oceanbrasil.libocean.control.glide.ImageDelegate;
 import com.oceanbrasil.libocean.control.http.Request;
 
@@ -59,11 +58,11 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
 
         image = (ImageView) findViewById(R.id.image);
 
-        Ocean.glide(this)
-                .load("http://novatec.com.br/figuras/capas/9788575223505.gif")
-                .build(GlideRequest.BYTES)
-                .addDelegateImageBytes(this)
-                .toBytes(150, 150);
+//        Ocean.glide(this)
+//                .load("http://novatec.com.br/figuras/capas/9788575223505.gif")
+//                .build(GlideRequest.BYTES)
+//                .addDelegateImageBytes(this)
+//                .toBytes(150, 150);
 
         //Ocean.newRequest("http://gitlab.oceanmanaus.com/snippets/1/raw",this).get().send();
 
@@ -77,9 +76,17 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
 
         Log.d("Image", bitMapData.length + "");
 
-        Ocean.newRequest("http://10.0.2.2/teste", this).get().add("teste", 1).send();
+        Ocean.newRequest("http://10.0.2.2/teste/index.php", this)
+                .post()
+                .add("teste", 1)
+                .add("file", file)
+                .send();
 
-
+        try {
+            //doHttp();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

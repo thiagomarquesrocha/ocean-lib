@@ -1,24 +1,15 @@
 package com.oceanbrasil.libocean.control.http;
 
 import android.os.AsyncTask;
-import android.os.Looper;
 import android.util.Log;
 
 import com.github.kevinsawicki.http.HttpRequest;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.PersistentCookieStore;
-import com.loopj.android.http.RequestParams;
-import com.loopj.android.http.SyncHttpClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
-import cz.msebera.android.httpclient.Header;
 
 
 /**
@@ -68,9 +59,6 @@ public class Request {
         this.TIMEOUT = timeout;
         data = new HashMap<>();
     }
-
-
-
 
     /**
      * Ativa um callback para a conexao informando se a requisicao foi bem sucediada ou não
@@ -187,64 +175,6 @@ public class Request {
     }
 
     private void requestPost() throws Exception{
-        Looper.prepare();
-        AsyncHttpClient myClient = new SyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        //Log.d(Constante.LOG, "[parametros] " + data.toString());
-        // Adiciona os parametros na conexao POST
-        for (Map.Entry<String, Object> entrada : data.entrySet()) {
-            //Log.d(Constante.LOG, "[VALORES] " + entrada.toString());
-
-            if (entrada.getValue() instanceof HashMap) { // Se é arquivo ( byte ) Map<String, Object> => key, value ( Map<String, Object> )
-                Map<String, Object> arquivos = (Map<String, Object>) entrada.getValue();
-                for (Map.Entry<String, Object> arquivo : arquivos.entrySet()) {
-                    String nomeImagem = arquivo.getKey();
-                    //byte[] byteImage_photo = (byte[]) arquivo.getValue();
-                    File file = (File) arquivo.getValue();
-                    params.put(entrada.getKey(), file, nomeImagem);
-                }
-            } else {
-                if (entrada.getValue() != null) {
-                    params.put(entrada.getKey(), entrada.getValue().toString());
-                    Log.i("Info", " Adicionando : " + entrada.getKey() + " : " + entrada.getValue().toString());
-                }
-            }
-        }
-
-        Log.i("info","#### Enviando via POST #### \n" +
-                " [URL] " + URL);
-
-        //client.finishMultipart();
-        myClient.post(getUrl(), params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Log.i("info","Requisicao carregada com sucesso ");
-                response = new String(responseBody);
-                Log.i("Response", response);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Request.this.error = ERROR_CONEXAO;
-                error.printStackTrace();
-                throw new UnsupportedOperationException("Página não encontrada " + statusCode);
-            }
-        });
-
-        //Looper.loop();
-
-        //response = client.getResponse();
-        //boolean ok = client.OK();
-
-//        if (!ok) {
-//            error = ERROR_CONEXAO;
-//            throw new UnsupportedOperationException("Página não encontrada");
-        //}
-    }
-
-
-    private void requestPost2() throws Exception{
         HttpClient client = new HttpClient(getUrl());
         client.connectForMultipart();
         //Log.d(Constante.LOG, "[parametros] " + data.toString());
