@@ -31,6 +31,7 @@ dependencies {
 # Recursos
 
 - [Imagens](https://github.com/oceanbrasil/LibOcean/wiki/Imagens)
+- [Requisições HTTP e JSON](https://github.com/oceanbrasil/OceanLib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
 
 
 # Como usar o Ocean Library?
@@ -107,3 +108,62 @@ Ocean.glide(context)
 
 
 [Ver mais exemplos](https://github.com/oceanbrasil/LibOcean/wiki/Imagens)
+
+## [Requisições HTTP e JSON](https://github.com/oceanbrasil/OceanLib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
+
+Requisições HTTP do tipo POST E GET
+
+**Como usar**
+
+``` Java 
+@Override
+protected void onCreate(Bundle savedInstanceState){
+
+    // Iniciando uma nova requisição
+    Ocean.newRequest("http://servidor", callback);
+}
+
+Request.RequestListener callback = new Request.RequestListener() {
+    @Override
+    public void onRequestOk(String response, JSONObject jsonObject, int error) {
+
+    }
+}
+```
+
+**POST**
+
+``` Java 
+Ocean.newRequest("http://servidor", callback)
+.post()
+.add("par1", "valor1")
+.add("par2", 1)
+.add("parN", 1.0f)
+.send();
+```
+
+**GET**
+
+``` Java 
+Ocean.newRequest("http://servidor", callback).get().send();
+```
+
+**Upload de arquivos**
+
+``` Java 
+@Override
+protected void onCreate(Bundle savedInstanceState){
+
+    // Implementacao para recuperar o arquivo
+
+    byte[] bitMapData; // Converter o arquivo para recuperar os bytes
+
+    HashMap<String, byte[]> file = new HashMap<>();
+    file.put("file.png", bitMapData);
+
+    Ocean.newRequest("http://localhost/servidor", callback)
+            .post()
+            .add("file", file)
+            .send();
+}
+```
