@@ -41,6 +41,7 @@ public class GlideImage {
         imageView = null;
         bytesDelegate = null;
         bitmapDelegate = null;
+        circleTransform = new CircleTransform(context);
     }
 
     public GlideImage load(String url) {

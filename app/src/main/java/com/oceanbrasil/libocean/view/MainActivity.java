@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.oceanbrasil.libocean.Ocean;
 import com.oceanbrasil.libocean.R;
+import com.oceanbrasil.libocean.control.glide.GlideRequest;
 import com.oceanbrasil.libocean.control.glide.ImageDelegate;
 import com.oceanbrasil.libocean.control.http.Request;
 
@@ -76,11 +77,23 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
 
         Log.d("Image", bitMapData.length + "");
 
-        Ocean.newRequest("http://10.0.2.2/teste/index.php", this)
+        Ocean.newRequest("http://10.0.2.2/teste/index.php", new Request.RequestListener() {
+            @Override
+            public void onRequestOk(String response, JSONObject jsonObject, int error) {
+
+            }
+        })
                 .post()
                 .add("teste", 1)
                 .add("file", file)
                 .send();
+
+        Ocean.glide(this)
+                .load(R.mipmap.slider_1)
+                .build(GlideRequest.BITMAP)
+                .resize(120, 120) // Tamanho em pixel
+                .circle()
+                .into(image);
 
         try {
             //doHttp();
