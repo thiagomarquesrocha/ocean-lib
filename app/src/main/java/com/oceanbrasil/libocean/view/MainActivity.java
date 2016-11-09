@@ -19,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
+class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
 
     private ImageView image;
 
@@ -77,16 +77,19 @@ public class MainActivity extends AppCompatActivity implements Request.RequestLi
 
         Log.d("Image", bitMapData.length + "");
 
-        Ocean.newRequest("http://10.0.2.2/teste/index.php", new Request.RequestListener() {
+        // http://10.0.2.2/teste/index.php
+        Ocean.newRequest("http://mobile-aceite.tcu.gov.br:80/mapa-da-saude/rest/estabelecimentos?quantidade=30", new Request.RequestListener() {
             @Override
             public void onRequestOk(String response, JSONObject jsonObject, int error) {
-
+                Log.d("JSON", jsonObject.toString());
             }
         })
-                .post()
-                .add("teste", 1)
-                .add("file", file)
-                .send();
+        .get()
+        .header("keep-alive")
+        .header("server")
+        .add("teste", 1)
+        .add("file", file)
+        .send();
 
         Ocean.glide(this)
                 .load(R.mipmap.slider_1)

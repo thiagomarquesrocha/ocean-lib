@@ -91,6 +91,11 @@ public class HttpClient {
         return buffer.toString();
     }
 
+    public String getHeader(String name){
+        if(con == null) return "";
+        return con.getHeaderField(name);
+    }
+
     public boolean OK() throws Exception {
 
         if( con.getResponseCode() != HttpURLConnection.HTTP_OK ){

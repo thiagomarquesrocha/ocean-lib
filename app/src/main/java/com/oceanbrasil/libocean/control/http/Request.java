@@ -5,9 +5,11 @@ import android.util.Log;
 
 import com.github.kevinsawicki.http.HttpRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,12 +46,14 @@ public class Request {
 
     private final Map<String, Object> data;
     private String response;
+    private Map<String, String> headers;
 
     private RequestListener callback;
 
     public Request(String URL,RequestListener callback) {
         this.URL = URL;
         data = new HashMap<>();
+        headers = new HashMap<>();
         this.callback = callback;
     }
 
@@ -84,11 +88,17 @@ public class Request {
         return request;
     }
 
-    public JSONObject send(){
+    public final Request header(String... name){
+        for(int i=0; i<name.length; i++){
+            headers.put(name[i], "");
+        }
+        return this;
+    }
+
+    public Request send(){
 
         Log.i("info","#### EXECUTANDO UMA REQUISICAO HTTP ####");
 
-        JSONObject json = null;
         exception = null;
         error = NENHUM_ERROR;
 
@@ -105,6 +115,7 @@ public class Request {
                 @Override
                 protected JSONObject doInBackground(Void... voids) {
 
+                    JSONObject json = new JSONObject();
                     try {
                         Log.i("info","Request : " + request);
                         switch (request){
@@ -115,22 +126,33 @@ public class Request {
                                 requestPost();
                                 break;
                         }
+
+                        json.put("header", getHeaderJSON());
                     }catch (Exception e){
                         e.printStackTrace();
                     }
 
                     Log.i("info","[RESPONSE] : " + response);
-                    JSONObject json = null;
                     try {
                         if (!response.isEmpty()) {
-                            json = new JSONObject(response);
+                            json.put("data", new JSONObject(response));
                         } else {
-                            json = null;
+                            json.put("data", new JSONObject());
                         }
-
                     }catch (JSONException e){
-                        e.printStackTrace();
+                        //e.printStackTrace();
+                        try {
+                            if (!response.isEmpty()) {
+                                JSONArray array = new JSONArray(response);
+                                json.put("data", array);
+                            } else {
+                                json.put("data", new JSONObject());
+                            }
+                        } catch (JSONException e1) {
+                            //e1.printStackTrace();
+                        }
                     }
+
                     return json;
                 }
 
@@ -155,10 +177,9 @@ public class Request {
             }
 
             e.printStackTrace();
-            json = null;
         }
 
-        return json;
+        return this;
     }
 
     private void requestGet() throws Exception{
@@ -169,6 +190,14 @@ public class Request {
         if (!request.ok()) {
             error = ERROR_CONEXAO;
             throw new UnsupportedOperationException("Página não encontrada");
+        }
+
+        //Log.d("Header", request.header("keep-alive"));
+
+        if(!headers.isEmpty()){
+            for(Map.Entry<String, String> row : headers.entrySet()){
+                headers.put(row.getKey(), request.header(row.getKey()));
+            }
         }
 
         response = request.body();
@@ -208,12 +237,32 @@ public class Request {
             error = ERROR_CONEXAO;
             throw new UnsupportedOperationException("Página não encontrada");
         }
+
+        if(!headers.isEmpty()){
+            for(Map.Entry<String, String> row : headers.entrySet()){
+                headers.put(row.getKey(), client.getHeader(row.getKey()));
+            }
+        }
     }
 
     public final Request remove(String key) {
         if(data.containsKey(key))
             data.remove(key);
         return this;
+    }
+
+    public JSONObject getHeaderJSON() throws Exception{
+        JSONObject json = new JSONObject();
+        if(!headers.isEmpty()){
+            for(Map.Entry<String, String> row : headers.entrySet()){
+                json.put(row.getKey(), row.getValue());
+            }
+        }
+        return json;
+    }
+
+    private String getHeader(String name){
+        return headers.get(name);
     }
 
     public Exception getException() {
