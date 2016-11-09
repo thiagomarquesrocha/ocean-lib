@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * Created by oceanbrasil on 19/08/2016.
@@ -48,13 +49,18 @@ public class HttpClient {
         return baos.toByteArray();
     }
 
-    public void connectForMultipart() throws Exception {
+    public void connectForMultipart(Map<String, String> map) throws Exception {
         con = (HttpURLConnection) ( new URL(url)).openConnection();
         con.setRequestMethod("POST");
         con.setDoInput(true);
         con.setDoOutput(true);
         con.setRequestProperty("Connection", "Keep-Alive");
         con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+        if(!map.isEmpty()){
+            for(Map.Entry<String, String> row : map.entrySet()){
+                con.setRequestProperty(row.getKey(), row.getValue());
+            }
+        }
         con.connect();
         os = con.getOutputStream();
     }

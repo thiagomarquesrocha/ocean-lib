@@ -78,17 +78,20 @@ class MainActivity extends AppCompatActivity implements Request.RequestListener,
         Log.d("Image", bitMapData.length + "");
 
         // http://10.0.2.2/teste/index.php
-        Ocean.newRequest("http://mobile-aceite.tcu.gov.br:80/mapa-da-saude/rest/estabelecimentos?quantidade=30", new Request.RequestListener() {
+        Ocean.newRequest("http://mobile-aceite.tcu.gov.br:80/appCivicoRS/rest/pessoas/autenticar", new Request.RequestListener() {
             @Override
             public void onRequestOk(String response, JSONObject jsonObject, int error) {
                 Log.d("JSON", jsonObject.toString());
+
             }
         })
         .get()
-        .header("keep-alive")
-        .header("server")
-        .add("teste", 1)
-        .add("file", file)
+         .header("email", "thiago.marques@oceanbrasil.com")
+         .header("googleToken", "eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ1MjA4ODBiNDYzNGE1YTNjNDFiNWNmNjU1M2U5ZWE0YTViNjA5ZjIifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE0Nzg3MTc3ODEsImV4cCI6MTQ3ODcyMTM4MSwiYXVkIjoiNjYwMTMzMzAxNDYzLWRna2hncmJqbGQxZW43YjQ4bzZ0cjA5N3Vtb2NnNnIwLm")
+        .resultFieldHeader("appToken")
+        .resultFieldHeader("server")
+//        .add("teste", 1)
+//        .add("file", file)
         .send();
 
         Ocean.glide(this)

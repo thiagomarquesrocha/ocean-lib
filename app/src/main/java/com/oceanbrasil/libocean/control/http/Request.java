@@ -9,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,12 +46,14 @@ public class Request {
     private final Map<String, Object> data;
     private String response;
     private Map<String, String> headers;
+    private Map<String, String> resultHeaders;
 
     private RequestListener callback;
 
     public Request(String URL,RequestListener callback) {
         this.URL = URL;
         data = new HashMap<>();
+        resultHeaders = new HashMap<>();
         headers = new HashMap<>();
         this.callback = callback;
     }
@@ -88,10 +89,15 @@ public class Request {
         return request;
     }
 
-    public final Request header(String... name){
+    public final Request resultFieldHeader(String... name){
         for(int i=0; i<name.length; i++){
-            headers.put(name[i], "");
+            resultHeaders.put(name[i], "");
         }
+        return this;
+    }
+
+    public Request header(String key, String value){
+        headers.put(key, value);
         return this;
     }
 
@@ -127,7 +133,7 @@ public class Request {
                                 break;
                         }
 
-                        json.put("header", getHeaderJSON());
+                        json.put("resultFieldHeader", getHeaderJSON());
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -183,20 +189,29 @@ public class Request {
     }
 
     private void requestGet() throws Exception{
-        HttpRequest request = HttpRequest.get(getUrl(), data, true).connectTimeout(TIMEOUT);
+        HttpRequest request = HttpRequest.get(getUrl(), data, true);
+
+        if(!headers.isEmpty()){
+            for(Map.Entry<String, String> row : headers.entrySet()){
+                request.header(row.getKey(), row.getValue());
+            }
+        }
+
+        request.connectTimeout(TIMEOUT);
 
         Log.i("info","#### Enviando via GET #### \n [URL] " + URL);
 
         if (!request.ok()) {
             error = ERROR_CONEXAO;
+            Log.i("info", request.body());
             throw new UnsupportedOperationException("Página não encontrada");
         }
 
-        //Log.d("Header", request.header("keep-alive"));
+        //Log.d("Header", request.resultFieldHeader("keep-alive"));
 
-        if(!headers.isEmpty()){
-            for(Map.Entry<String, String> row : headers.entrySet()){
-                headers.put(row.getKey(), request.header(row.getKey()));
+        if(!resultHeaders.isEmpty()){
+            for(Map.Entry<String, String> row : resultHeaders.entrySet()){
+                resultHeaders.put(row.getKey(), request.header(row.getKey()));
             }
         }
 
@@ -205,7 +220,8 @@ public class Request {
 
     private void requestPost() throws Exception{
         HttpClient client = new HttpClient(getUrl());
-        client.connectForMultipart();
+        client.connectForMultipart(headers);
+
         //Log.d(Constante.LOG, "[parametros] " + data.toString());
         // Adiciona os parametros na conexao POST
         for (Map.Entry<String, Object> entrada : data.entrySet()) {
@@ -238,9 +254,9 @@ public class Request {
             throw new UnsupportedOperationException("Página não encontrada");
         }
 
-        if(!headers.isEmpty()){
-            for(Map.Entry<String, String> row : headers.entrySet()){
-                headers.put(row.getKey(), client.getHeader(row.getKey()));
+        if(!resultHeaders.isEmpty()){
+            for(Map.Entry<String, String> row : resultHeaders.entrySet()){
+                resultHeaders.put(row.getKey(), client.getHeader(row.getKey()));
             }
         }
     }
@@ -253,8 +269,8 @@ public class Request {
 
     public JSONObject getHeaderJSON() throws Exception{
         JSONObject json = new JSONObject();
-        if(!headers.isEmpty()){
-            for(Map.Entry<String, String> row : headers.entrySet()){
+        if(!resultHeaders.isEmpty()){
+            for(Map.Entry<String, String> row : resultHeaders.entrySet()){
                 json.put(row.getKey(), row.getValue());
             }
         }
@@ -262,7 +278,7 @@ public class Request {
     }
 
     private String getHeader(String name){
-        return headers.get(name);
+        return resultHeaders.get(name);
     }
 
     public Exception getException() {
