@@ -167,3 +167,22 @@ protected void onCreate(Bundle savedInstanceState){
             .send();
 }
 ```
+
+# Utiliza
+
+[Http-Request](https://github.com/kevinsawicki/http-request)
+
+[Glide](https://github.com/bumptech/glide)
+
+[Surviving-with-android](https://github.com/survivingwithandroid/Surviving-with-android)
+
+# Autor
+
+[Ocean Brasil](http://www.oceanbrasil.com/)
+
+# Equipe
+
+Thiago Marques - [Github](https://github.com/thiagomarques2015)
+
+
+Alessandro Barreto - [Github](https://github.com/AleBarreto)
