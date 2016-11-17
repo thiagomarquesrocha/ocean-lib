@@ -186,3 +186,7 @@ Thiago Marques - [Github](https://github.com/thiagomarques2015)
 
 
 Alessandro Barreto - [Github](https://github.com/AleBarreto)
+
+# Licença
+
+OceanLib is open-sourced software licensed under the [MIT](https://opensource.org/licenses/MIT) license
