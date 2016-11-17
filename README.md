@@ -176,10 +176,6 @@ protected void onCreate(Bundle savedInstanceState){
 
 [Surviving-with-android](https://github.com/survivingwithandroid/Surviving-with-android)
 
-# Autor
-
-[Ocean Brasil](http://www.oceanbrasil.com/)
-
 # Equipe
 
  [Thiago Marques](https://github.com/thiagomarques2015)
