@@ -2,7 +2,7 @@
 
 Construindo apps em poucas linhas, uma biblioteca que reúne as melhores soluções em Android em um só lugar
 
-![Ocean Library](http://nuvem.oceanmanaus.com/index.php/s/N617Kal4qnNOGJu/download)
+![Ocean Library](https://raw.githubusercontent.com/oceanbrasil/OceanLib/master/oceanlib.png)
 
 # Download
 
@@ -24,7 +24,7 @@ Adiciona no **build.gradle** da pasta **app** do seu projeto
 ``` Gradle 
 
 dependencies {
-   compile 'com.github.oceanbrasil:OceanLib:1.1.4'
+   compile 'com.github.oceanbrasil:OceanLib:1.1.6'
 }
 ```
 
