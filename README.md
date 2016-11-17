@@ -182,10 +182,10 @@ protected void onCreate(Bundle savedInstanceState){
 
 # Equipe
 
-Thiago Marques - [Github](https://github.com/thiagomarques2015)
+ [Thiago Marques](https://github.com/thiagomarques2015)
 
 
-Alessandro Barreto - [Github](https://github.com/AleBarreto)
+ [Alessandro Barreto](https://github.com/AleBarreto)
 
 # Licença
 
