@@ -1,6 +1,6 @@
 # OceanLib
 
-Construindo apps em poucas linhas, uma biblioteca que reúne as melhores soluções em Android em um só lugar
+Uma lib Android feita para construir apps em poucas linhas, reúne as melhores soluções em Android, do serviço HTTP ao processamento de Imagens.
 
 ![Ocean Library](https://raw.githubusercontent.com/oceanbrasil/OceanLib/master/oceanlib.png)
 
