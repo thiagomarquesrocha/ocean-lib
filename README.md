@@ -24,7 +24,7 @@ Adiciona no **build.gradle** da pasta **app** do seu projeto
 ``` Gradle 
 
 dependencies {
-   compile 'com.github.oceanbrasil:OceanLib:1.1.6'
+   compile 'com.github.thiagomarquesrocha:ocean-lib:1.0.0'
 }
 ```
 
