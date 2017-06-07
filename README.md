@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OceanLib
 
 Uma lib Android feita para construir apps em poucas linhas, reúne as melhores soluções em Android, do serviço HTTP ao processamento de Imagens.
@@ -186,3 +187,7 @@ protected void onCreate(Bundle savedInstanceState){
 # Licença
 
 OceanLib is open-sourced software licensed under the [MIT](https://opensource.org/licenses/MIT) license
+=======
+# ocean-lib
+Uma lib Android feita para construir apps em poucas linhas, reúne as melhores soluções em Android, do serviço HTTP ao processamento de Imagens. 
+>>>>>>> dabd43c3acae981c4c46b9f29571c1587f45157d
