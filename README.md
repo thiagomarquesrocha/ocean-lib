@@ -11,11 +11,11 @@ Adiciona no **build.gradle** raiz do seu projeto
 ``` Gradle 
 
 allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
 	}
+}
 ```
 
 
@@ -24,7 +24,7 @@ Adiciona no **build.gradle** da pasta **app** do seu projeto
 ``` Gradle 
 
 dependencies {
-   compile 'com.github.thiagomarquesrocha:ocean-lib:1.0.0'
+   compile 'com.github.thiagomarquesrocha:ocean-lib:1.0.1'
 }
 ```
 
