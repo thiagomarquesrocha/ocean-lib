@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.view;
+package com.ocean.lib.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.oceanbrasil.libocean.Ocean;
-import com.oceanbrasil.libocean.R;
-import com.oceanbrasil.libocean.control.glide.GlideRequest;
-import com.oceanbrasil.libocean.control.glide.ImageDelegate;
-import com.oceanbrasil.libocean.control.http.Request;
+import com.ocean.lib.Ocean;
+import com.ocean.lib.R;
+import com.ocean.lib.control.glide.GlideRequest;
+import com.ocean.lib.control.glide.ImageDelegate;
+import com.ocean.lib.control.http.Request;
 
 import org.json.JSONObject;
 
@@ -19,14 +19,13 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 
-class MainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
+class LibOceanMainActivity extends AppCompatActivity implements Request.RequestListener, ImageDelegate.BytesListener, ImageDelegate.BitmapListener {
 
     private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         //Ocean.newRequest("http://gitlab.oceanmanaus.com/snippets/1/raw",this).get().send();
 
@@ -86,7 +85,7 @@ class MainActivity extends AppCompatActivity implements Request.RequestListener,
             }
         })
         .get()
-         .header("email", "thiago.marques@oceanbrasil.com")
+         .header("email", "thiago@gmail.com")
          .header("googleToken", "eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ1MjA4ODBiNDYzNGE1YTNjNDFiNWNmNjU1M2U5ZWE0YTViNjA5ZjIifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE0Nzg3MTc3ODEsImV4cCI6MTQ3ODcyMTM4MSwiYXVkIjoiNjYwMTMzMzAxNDYzLWRna2hncmJqbGQxZW43YjQ4bzZ0cjA5N3Vtb2NnNnIwLm")
         .resultFieldHeader("appToken")
         .resultFieldHeader("server")
@@ -94,12 +93,13 @@ class MainActivity extends AppCompatActivity implements Request.RequestListener,
 //        .add("file", file)
         .send();
 
-        Ocean.glide(this)
+        /*Ocean.glide(this)
                 .load(R.mipmap.slider_1)
                 .build(GlideRequest.BITMAP)
                 .resize(120, 120) // Tamanho em pixel
                 .circle()
                 .into(image);
+        */
 
         try {
             //doHttp();

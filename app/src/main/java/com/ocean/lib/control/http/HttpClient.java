@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.control.http;
+package com.ocean.lib.control.http;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

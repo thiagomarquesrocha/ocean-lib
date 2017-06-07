@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.view;
+package com.ocean.lib.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.v4.app.Fragment;
 
-import com.oceanbrasil.libocean.Ocean;
+import com.ocean.lib.Ocean;
 
 /**
  * Created by oceanbrasil on 22/08/2016.

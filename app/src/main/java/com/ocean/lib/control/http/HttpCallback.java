@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.control.http;
+package com.ocean.lib.control.http;
 
 /**
  * Created by oceanbrasil on 19/08/2016.

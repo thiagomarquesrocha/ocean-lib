@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean;
+package com.ocean.lib;
 
 import org.junit.Test;
 

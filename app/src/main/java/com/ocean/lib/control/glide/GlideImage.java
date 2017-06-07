@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.control.glide;
+package com.ocean.lib.control.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.signature.MediaStoreSignature;
-import com.oceanbrasil.libocean.R;
+import com.ocean.lib.R;
 
 /**
  * Created by oceanmanaus on 23/08/2016.

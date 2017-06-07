@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean.control.glide;
+package com.ocean.lib.control.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;

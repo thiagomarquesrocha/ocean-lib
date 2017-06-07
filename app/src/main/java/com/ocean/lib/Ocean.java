@@ -1,4 +1,4 @@
-package com.oceanbrasil.libocean;
+package com.ocean.lib;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,8 +6,8 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.oceanbrasil.libocean.control.glide.GlideImage;
-import com.oceanbrasil.libocean.control.http.Request;
+import com.ocean.lib.control.glide.GlideImage;
+import com.ocean.lib.control.http.Request;
 
 /**
  * Created by oceanbrasil on 19/08/2016.
