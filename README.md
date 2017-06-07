@@ -2,7 +2,7 @@
 
 Uma lib Android feita para construir apps em poucas linhas, reúne as melhores soluções em Android, do serviço HTTP ao processamento de Imagens.
 
-![Ocean Library](https://raw.githubusercontent.com/oceanbrasil/OceanLib/master/oceanlib.png)
+![Ocean Library](https://raw.githubusercontent.com/thiagomarquesrocha/ocean-lib/master/oceanlib.png)
 
 # Download
 
@@ -30,15 +30,15 @@ dependencies {
 
 # Recursos
 
-- [Imagens](https://github.com/oceanbrasil/LibOcean/wiki/Imagens)
-- [Requisições HTTP e JSON](https://github.com/oceanbrasil/OceanLib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
+- [Imagens](https://github.com/thiagomarquesrocha/ocean-lib/wiki/Imagens)
+- [Requisições HTTP e JSON](https://github.com/thiagomarquesrocha/ocean-lib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
 
 
 # Como usar o Ocean Library?
 
 Veja alguns exemplos de uso da bilbioteca
 
-## [Imagens](https://github.com/oceanbrasil/LibOcean/wiki/Imagens)
+## [Imagens](https://github.com/thiagomarquesrocha/ocean-lib/wiki/Imagens)
 
 Ocean Library possui suporte para execução e tratamento de imagens sincronizando com views e otimizando o carregamento quando for necessário trabalhar com imagens externas como URL's ou imagens locais como Uri's.
 
@@ -107,9 +107,9 @@ Ocean.glide(context)
 ```
 
 
-[Ver mais exemplos](https://github.com/oceanbrasil/LibOcean/wiki/Imagens)
+[Ver mais exemplos](https://github.com/thiagomarquesrocha/ocean-lib/wiki/Imagens)
 
-## [Requisições HTTP e JSON](https://github.com/oceanbrasil/OceanLib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
+## [Requisições HTTP e JSON](https://github.com/thiagomarquesrocha/ocean-lib/wiki/Requisi%C3%A7%C3%B5es-HTTP-e-JSON)
 
 Requisições HTTP do tipo POST E GET
 
