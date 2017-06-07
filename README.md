@@ -178,7 +178,7 @@ protected void onCreate(Bundle savedInstanceState){
 
 # Equipe
 
- [Thiago Marques](https://github.com/thiagomarques2015)
+ [Thiago Marques](https://github.com/thiagomarquesrocha)
 
 
  [Alessandro Barreto](https://github.com/AleBarreto)
